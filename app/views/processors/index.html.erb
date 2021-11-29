@@ -1,0 +1,30 @@
+<h1>Processor</h1>
+
+<table class='table'>
+  <thead>
+    <th>Brand</th>
+    <th>Generation</th>
+    <th>Name</th>
+    <th>Cores</th>
+
+    <th colspan=3>Actions</th>
+  </thead>
+  <tbody>
+    <% @processors.each do |processor| %>
+      <tr>
+        <td><%= processor.brand.name %></td>
+        <td><%= processor.generation.name %></td>
+        <td><%= processor.name %></td>
+        <td><%= processor.cores %></td>
+
+        <td><%= link_to "Show", processor_path(processor) %></td>
+        <td><%= link_to "Edit", edit_processor_path(processor) %></td>
+        <td><%= link_to "Delete", processor_path(processor), "data-turbo-method": :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "New processor", new_processor_path %>

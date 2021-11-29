@@ -5,3 +5,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import DynamicSelectController from "./dynamic_select_controller"
+application.register("dynamic-select", DynamicSelectController)

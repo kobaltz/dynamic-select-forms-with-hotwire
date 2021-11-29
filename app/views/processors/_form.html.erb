@@ -1,0 +1,42 @@
+<%= form_with(model: processor) do |form| %>
+  <div data-controller='dynamic-select'
+    data-dynamic-select-url-value="<%= generations_path %>"
+    data-dynamic-select-selected-value="<%= processor.generation_id %>">
+    <div class="mb-3">
+      <%= form.label :brand_id, class: 'form-label' %>
+      <%= form.select :brand_id,
+        Brand.all.map { |b| [b.name, b.id] },
+        { include_blank: true },
+        {
+          class: 'form-control',
+          "data-action": "change->dynamic-select#change",
+          "data-dynamic-select-target": "mainSelect"
+        } %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :generation_id, class: 'form-label' %>
+      <%= form.select :generation_id,
+        [],
+        { include_blank: true },
+        {
+          class: 'form-control',
+          "data-dynamic-select-target": "secondarySelect"
+        } %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cores, class: 'form-label' %>
+    <%= form.number_field :cores, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

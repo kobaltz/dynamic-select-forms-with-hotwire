@@ -1,0 +1,7 @@
+<%= render @processor %>
+
+<div>
+  <%= link_to "Edit", edit_processor_path(@processor) %> |
+  <%= link_to "Destroy", processor_path(@processor), "data-turbo-method": :delete %> |
+  <%= link_to "Back to processors", processors_path %>
+</div>
